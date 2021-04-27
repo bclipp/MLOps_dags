@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from airflow import DAG
-from airflow.providers.databricks.operators.databricks import DatabricksRunNowOperator
+from airflow.providers.databricks.operators.databricks import DatabricksRunNowOperator ,DatabricksSubmitRunOperator
 
 with DAG(
         dag_id='build_model_pipeline',
@@ -12,5 +12,12 @@ with DAG(
                                                job_id=3)
     build_model = DatabricksRunNowOperator(task_id='build_model',
                                            job_id=4)
+
+    build_model = DatabricksSubmitRunOperator(
+        task_id='build_model',
+        spark_python_task={"python file path and parameters to run the python file with"},
+        new_cluster="tiny",
+    )
+    # pass Hyper
 
     preprocess_data >> build_model
