@@ -16,7 +16,7 @@ with DAG(
     build_model = DatabricksSubmitRunOperator(
         task_id='build_model',
         spark_python_task={"python file path and parameters to run the python file with"},
-        new_cluster="tiny",
+        existing_cluster_id="tiny",
     )
     # pass Hyper
 
