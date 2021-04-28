@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from airflow import DAG
-from airflow.providers.databricks.operators.databricks import DatabricksRunNowOperator, DatabricksSubmitRunOperator
+from airflow.providers.databricks.operators.databricks import DatabricksSubmitRunOperator
 
 with DAG(
         dag_id="build_model_pipeline",

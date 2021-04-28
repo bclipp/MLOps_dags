@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from airflow import DAG
-from airflow.providers.databricks.operators.databricks import DatabricksRunNowOperator
+from airflow.providers.databricks.operators.databricks import DatabricksSubmitRunOperator
 
 with DAG(
         dag_id='search_model_pipeline',
@@ -15,8 +15,6 @@ with DAG(
         existing_cluster_id="0421-172042-scats73"
     )
 
-    search_model = DatabricksRunNowOperator(task_id='search_model',
-                                            job_id=2)
     search_model = DatabricksSubmitRunOperator(
         task_id="search_model",
         spark_python_task={"python_file": "dbfs:/datalake/code/search/app/__main__.py",
