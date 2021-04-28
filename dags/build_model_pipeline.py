@@ -15,14 +15,14 @@ with DAG(
 
     preprocess_data = DatabricksSubmitRunOperator(
         task_id="preprocess_data",
-        spark_python_task={"python_file": "dbfs:/datalake/code/preprocessing/app/__main__.py",
+        spark_python_task={"python_file": "dbfs:/datalake/code/preprocessing/__main__.py",
                            "parameters": ""},
         existing_cluster_id="0421-172042-scats73"
     )
 
     build_model = DatabricksSubmitRunOperator(
         task_id="build_model",
-        spark_python_task={"python_file": "dbfs:/datalake/code/model/app/__main__.py",
+        spark_python_task={"python_file": "dbfs:/datalake/code/model/__main__.py",
                            "parameters": ""},
         existing_cluster_id="0421-172042-scats73"
     )
