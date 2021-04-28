@@ -12,7 +12,7 @@ with DAG(
     #                                           job_id=3)
     # build_model = DatabricksRunNowOperator(task_id="build_model_old",
     #                                      job_id=4)
-    
+
     preprocess_data = DatabricksSubmitRunOperator(
         task_id="preprocess_data",
         spark_python_task={"python_file": "dbfs:/datalake/code/preprocessing/app/__main__.py",
