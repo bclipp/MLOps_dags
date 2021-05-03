@@ -27,7 +27,9 @@ with DAG(
     build_model = DatabricksSubmitRunOperator(
         task_id="build_model",
         spark_python_task={"python_file": "dbfs:/datalake/code/model/__main__.py",
-                           "parameters": f"{uid}"},
+                           "parameters": f"{uid}",
+                           "max_depth": '\'{{ dag_run.conf["max_depth"] if dag_run else "" }}\'',
+                           "n_estimators": '\'{{ dag_run.conf["n_estimators"] if dag_run else "" }}\''},
         existing_cluster_id=cluster_id
     )
 
