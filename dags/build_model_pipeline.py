@@ -8,11 +8,6 @@ with DAG(
         schedule_interval=None,
         start_date=datetime(1981, 1, 1)
 ) as dag:
-    # preprocess_data = DatabricksRunNowOperator(task_id="preprocess_data",
-    #                                           job_id=3)
-    # build_model = DatabricksRunNowOperator(task_id="build_model_old",
-    #                                      job_id=4)
-    # uid = str(uuid.uuid1()).replace('-', '')
     timestamp = datetime.now()
     uid = timestamp.strftime("%b%d%Y")
     print("UID: " + uid)
