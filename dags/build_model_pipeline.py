@@ -30,8 +30,6 @@ with DAG(
                            "parameters": [f"{uid}",
                                           '{{ (dag_run.conf["max_depth"] if dag_run else "") | tojson }}',
                                           '{{ (dag_run.conf["n_estimators"] if dag_run else "") | tojson }}']},
-        # "max_depth": '\'{{ dag_run.conf["max_depth"] if dag_run else "" }}\'',
-        #  "n_estimators": '\'{{ dag_run.conf["n_estimators"] if dag_run else "" }}\''},
         existing_cluster_id=cluster_id
     )
 
