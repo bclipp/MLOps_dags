@@ -22,7 +22,7 @@ with DAG(
     search_model = DatabricksSubmitRunOperator(
         task_id="search_model",
         spark_python_task={"python_file": "dbfs:/datalake/code/cluster_search/__main__.py",
-                           "parameters": ""},
+                           "parameters": f"{uid}"},
         existing_cluster_id=cluster_id
     )
 

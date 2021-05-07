@@ -1,5 +1,4 @@
 from datetime import datetime
-import uuid
 from airflow import DAG
 from airflow.providers.databricks.operators.databricks import DatabricksSubmitRunOperator
 
