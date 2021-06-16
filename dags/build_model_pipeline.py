@@ -1,6 +1,10 @@
+"""
+This module is dedicated to building ML models
+"""
 from datetime import datetime
 from airflow import DAG
-from airflow.providers.databricks.operators.databricks import DatabricksSubmitRunOperator
+from airflow.providers.databricks.operators.databricks \
+    import DatabricksSubmitRunOperator
 
 with DAG(
         dag_id="build_model_pipeline",

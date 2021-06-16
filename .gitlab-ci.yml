@@ -21,7 +21,7 @@ on-pull-requests:
     - pipenv run pip freeze > requirements.txt
     - pipenv run pip freeze
     - pip install -r requirements.txt
-    - pylint  dags
+    - pylint --fail-under=6  dags
 
 except-pull-requests:
   script: echo 'this should not run on pull requests'

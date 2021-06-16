@@ -1,3 +1,6 @@
+"""
+This module is dedicated to searching for ideal hyperparameters using a Spark Cluster.
+"""
 from datetime import datetime
 
 from airflow import DAG

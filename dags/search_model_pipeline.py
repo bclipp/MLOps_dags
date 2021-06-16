@@ -1,3 +1,6 @@
+"""
+This module is dedicated to searching for the ideal hyperparameters
+"""
 from datetime import datetime
 
 from airflow import DAG
