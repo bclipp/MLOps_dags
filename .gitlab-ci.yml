@@ -13,9 +13,6 @@ cache:
   paths:
     - .pipenv
 
-always-run:
-  script: echo 'this should always run'
-
 on-pull-requests:
   stage: test
   script:
@@ -38,4 +35,4 @@ astro_deploy:
     - docker login registry.gcp0001.us-east4.astronomer.io -u _ -p $SERVICE_ACCOUNT_KEY
     - docker push registry.gcp0001.us-east4.astronomer.io/infrared-photon-7780/airflow:CI-$CI_PIPELINE_IID
   only:
-    - master
+    - main
