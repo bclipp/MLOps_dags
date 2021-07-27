@@ -1,5 +1,9 @@
 image: "python:3.7"
 
+stages:
+    - test
+    - deploy
+
 variables:
   WORKON_HOME: .pipenv/venvs
   PIP_CACHE_DIR: .pipenv/pipcache
@@ -22,8 +26,16 @@ on-pull-requests:
     - pipenv run pip freeze
     - pip install -r requirements.txt
     - pylint --fail-under=6  dags
-
-except-pull-requests:
-  script: echo 'this should not run on pull requests'
-  except:
-    - external_pull_requests
+    
+astro_deploy:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo "Building container.."
+    - docker build -t registry.gcp0001.us-east4.astronomer.io/infrared-photon-7780/airflow:CI-$CI_PIPELINE_IID .
+    - docker login registry.gcp0001.us-east4.astronomer.io -u _ -p $SERVICE_ACCOUNT_KEY
+    - docker push registry.gcp0001.us-east4.astronomer.io/infrared-photon-7780/airflow:CI-$CI_PIPELINE_IID
+  only:
+    - master
