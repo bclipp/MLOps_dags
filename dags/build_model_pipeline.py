@@ -11,6 +11,7 @@ with DAG(
         schedule_interval=None,
         start_date=datetime(1981, 1, 1)
 ) as dag:
+    cluster_id = "0728-180646-stoop524"
     timestamp = datetime.now()
     uid = timestamp.strftime("%b%d%Y")
     print("UID: " + uid)
