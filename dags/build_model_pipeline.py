@@ -15,7 +15,7 @@ with DAG(
     timestamp = datetime.now()
     uid = timestamp.strftime("%b%d%Y")
     print("UID: " + uid)
-    cluster_id = "0428-143146-wig801"
+    cluster_id = cluster_id
     preprocess_data = DatabricksSubmitRunOperator(
         task_id="preprocess_data",
         spark_python_task={"python_file": "dbfs:/datalake/code/preprocessing/__main__.py",
